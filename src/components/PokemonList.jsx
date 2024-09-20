@@ -16,7 +16,6 @@ function PokemonList() {
     const fetchPokemons = async () => {
       const fetchPromises = [];
 
-
       for (let i = startIndex; i < endIndex; i++) {
         const pokemon = pokemons[i];
 
@@ -76,15 +75,17 @@ function PokemonList() {
           Previous page
         </button>
         <button onClick={() => setPage(page + 1)}>Next page</button>
-        {pokemons.slice(startIndex, endIndex).map(pokemon => (
-          <Card
-            key={pokemon.name}
-            image={pokemon.image}
-            name={pokemon.name}
-            id={pokemon.id}
-            types={pokemon.types}
-          />
-        ))}
+        <div className="grid gap-4 grid-cols-1 justify-between items-center w-full sm:grid-cols-[repeat(auto-fit,_minmax(260px,_1fr))]">
+          {pokemons.slice(startIndex, endIndex).map(pokemon => (
+            <Card
+              key={pokemon.name}
+              image={pokemon.image}
+              name={pokemon.name}
+              id={pokemon.id}
+              types={pokemon.types}
+            />
+          ))}
+        </div>
       </>
     )
   );
